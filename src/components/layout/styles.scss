@@ -1,0 +1,112 @@
+@import '../../assets/base';
+
+.container {
+	font: 14px/1.5 Arial, sans-serif;
+  color: #333;
+  word-break: break-word;
+  text-align: center;
+
+  &:global(.nav-opend){
+    .main-nav-trigger {
+      left: 300px;
+      cursor: w-resize;
+    }
+    .main-nav-mask {
+      width: 100%;
+    }
+    .main-nav {
+      width: 240px;
+    }
+    .main-content {
+      left: 240px;
+    }
+  }
+}
+
+// 添加过渡动效
+.main-nav-trigger,
+.main-nav,
+.main-content {
+  @include transitionEffect;
+}
+
+// trigger不能放在main-content里，原因有2：
+//  1. main-content层级比main-nav-mask低，但trigger需要显示在mask之上；
+//  2. main-content是relative布局，向右移动时其原来占据的空间不变，trigger不会随之移动
+// 因此，trigger需要fixed定位
+.main-nav-trigger,
+.main-nav-mask,
+.main-nav {
+  position: fixed;
+}
+
+// 初始时，主导航和mask均不显示，当点击trigger后才展现
+.main-nav-mask,
+.main-nav {
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+}
+
+.main-nav-trigger {
+  z-index: index($layers, main-nav-trigger);
+  top: 60px;
+  left: 60px;
+  width: 20px;
+  height: 20px;
+  background: blue;
+  cursor: e-resize;
+}
+
+.main-nav-mask {
+  z-index: index($layers, main-nav-mask);
+}
+
+.main-nav {
+  z-index: index($layers, main-nav);
+  background: rgba(0, 0, 0, .2);
+  overflow: hidden;
+
+  ul {
+    list-style: none;
+    margin: 60px 0 0 60px
+  }
+
+  li {
+    margin-bottom: 50px
+  }
+
+  a {
+    display: block;
+    color: #777;
+    text-decoration: none;
+  }
+
+  a span {
+    display: block;
+    margin-top: 5px;
+    font-size: 8px;
+    font-family: Arial;
+    text-transform: uppercase;
+  }
+  
+  a.active,
+  a:hover {
+    color: #fff;
+  }
+}
+
+/*
+  main content area
+ */
+.main-content {
+  position: relative;
+  z-index: index($layers, main-content);
+  left: 0;
+  top: 0;
+}
+
+.main-content-footer {
+  text-align: center;
+}

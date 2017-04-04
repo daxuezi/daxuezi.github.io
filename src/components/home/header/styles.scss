@@ -1,0 +1,34 @@
+@import '../../../assets/base';
+
+.home-header {
+	position: relative;
+}
+
+.banner, .about {
+	@include absoulteCover;
+	@include transitionEffect;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn {
+	display: inline-block;
+    margin-top: 40px;
+    width: 120px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+    border: 1px solid;
+}
+
+.site-name {
+    height: 90px;
+    text-indent: -999999em;
+    background: pink;
+    // background: url(../img/daxuezi.png) center top no-repeat;
+}
+
+
+
