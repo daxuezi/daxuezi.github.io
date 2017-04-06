@@ -13,7 +13,7 @@ import Detail from './components/detail'; // 详情页
 
 ReactDOM.render(
 	<Router history={browserHistory}>
-    <Route path="/dist/" component={Layout}>
+    <Route path="/" component={Layout}>
       <IndexRoute component={Home}/>
       <Route path="/work" component={Work}/>
       <Route path="/experience" component={Experience}/>
