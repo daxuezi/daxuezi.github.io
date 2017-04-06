@@ -1,7 +1,10 @@
 import React from 'react';
 
 import Header from './header';
-import style from './styles';
+import WhatDoIDo from './what-do-i-do';
+import ResponsiveDesign from './responsive-design';
+import RecentUpdate from './recent-update';
+import Contact from './contact';
 
 
 class Home extends React.Component {
@@ -13,6 +16,10 @@ class Home extends React.Component {
 		return (
 			<div>
 				<Header />
+				<WhatDoIDo />
+				<ResponsiveDesign />
+				<RecentUpdate />
+				<Contact />
 			</div>
 		);
 	}

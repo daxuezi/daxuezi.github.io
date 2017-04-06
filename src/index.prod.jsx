@@ -11,15 +11,14 @@ import Photograph from './components/photograph'; // 摄影
 
 
 ReactDOM.render(
-	<AppContainer>
-	  <Router history={browserHistory}>
-		    <Route path="/" component={Layout}>
-		      <IndexRoute component={Home}/>
-		      <Route path="/work" component={Work}/>
-		      <Route path="/experience" component={Experience}/>
-		      <Route path="/photograph" component={Photograph}/>
-		    </Route>
-		  </Router>
-	</AppContainer>,
+	<Router history={browserHistory}>
+    <Route path="/" component={Layout}>
+      <IndexRoute component={Home}/>
+      <Route path="/work" component={Work}/>
+      <Route path="/experience" component={Experience}/>
+      <Route path="/photograph" component={Photograph}/>
+      <Route path="/detail/:filename" component={Detail}/>
+    </Route>
+  </Router>,
 	document.getElementById('root')
 );

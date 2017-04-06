@@ -1,0 +1,64 @@
+/* 页面公用且必须的基础样式 */
+
+@import './normalize';
+@import './variables';
+@import './mixins';
+
+body {
+  font-size: $contentFontSize;
+  line-height: $contentLineHeight;
+  font-family: $contentFontFamily, sans-serif;
+  color: $contentColorBlack;
+  word-break: break-word;
+  text-align: center;
+}
+
+a[href] {
+  cursor: pointer;
+}
+
+// 主区域内容
+:global(.main-segment) {
+  padding: 100px 0;
+}
+
+// 主区域区块内容
+:global(.main-content) {
+  @include hc;
+
+  @media screen and (max-width: $mobileLgMax) {
+    & {
+      width: $mainContentMobileWidth;
+    }
+  }
+
+  @media screen and (min-width: $screenSmMin) {
+    & {
+      width: $mainContentSmWidth;
+    }
+  }
+
+  @media screen and (min-width: $screenMidMin) {
+    & {
+      width: $mainContentMidWidth;
+    }
+  }
+
+  @media screen and (min-width: $screenLgMin) {
+    & {
+      width: $mainContentLgWidth;
+    }
+  }
+
+  :global(.content-title) {
+    font-size: $contentTitleFontSize;
+  }
+
+  :global(.content-sub-title) {
+    font-size: $contentFontSize;
+    font-weight: normal;
+    color: $contentColorGray;
+  }
+
+
+}

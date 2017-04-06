@@ -1,0 +1,109 @@
+/*
+	说明：
+		正文指网页主体main, 
+		正文相关配置为页面基础配置，
+		当正文配置不满足个别模块需求时，可在该模块范围内对正文配置进行覆盖，
+		如：$footerColorGray 是对 $contentColorGray的覆盖
+
+ */ 
+
+/*
+	z-index层级
+ */
+
+// 页面主体结构
+$layers: main, top-nav, side-nav-mask, side-nav, side-nav-trigger;
+
+
+/*
+	尺寸相关
+ */
+
+// pc屏幕尺寸
+$screenLgMin: 1300px; 
+$screenMidMin: 1090px;
+$screenSmMin: 770px;
+// 平板和手机屏幕尺寸
+$mobileLgMax: 769px;
+$mobileLgMin: 480px;
+$mobileSmMax: 479px;
+
+// 主内容区域宽度，根据屏幕宽度自动调整：
+// [1300, 无限大] --> 1170
+// [1090, 1299] --> 970
+// [768, 1089] --> 750
+// [0, 770](包含[0, 479]和[480, 769]) --> 屏幕宽度 * 90% 
+$mainContentLgWidth: 1170px;
+$mainContentMidWidth: 970px;
+$mainContentSmWidth: 750px;
+$mainContentMobileWidth: 90%;
+
+// 左侧导航宽度
+$sideNavWidth: 240px;
+$sideNavItemMarginBottom: 50px;
+
+// 左侧导航开关
+$sideNavTriggerLeft: 60px;
+$sideNavTriggerTop: 60px;
+$sideNavTriggerWidth: 20px;
+$sideNavTriggerHeight: 19px;
+
+// 详情页顶部导航
+$topNavListTop: 24px;
+$topNavListRight: 93px;
+
+// 页脚
+$footerHeight: 120px;
+$footerPaddintTop: 20px;
+
+// 首页header
+$headerMinHeight: 500px;
+$bannerTop: 45%;
+$siteNameHeight: 90px;
+
+$aboutTop: 30%;
+$avatorWidth: 100px;
+$avatorHeight: 100px;
+$selfIntroWidth: 30em;
+
+// 详情页
+$detailContentTop: 120px;
+$detailContentBottom: 50px;
+
+/*
+	背景相关
+ */
+
+$bgGray: #f5f6f7;
+$bgBlack: #272727;
+$headerBgBlack: #2e2e2e;
+
+
+/*
+	字体相关
+ */
+
+// 正文字体
+$contentFontFamily: 'Microsoft Yahei';
+
+// 正文行距
+$contentLineHeight: 1.8;
+
+// 正文字体白色
+$contentColorWhite: #fff;
+// 正文字体黑色
+$contentColorBlack: #333;
+// 正文字体灰色
+$contentColorGray: #777;
+// 页脚字体灰色
+$footerColorGray: #aaa;
+
+// 正文字体大小
+$contentFontSize: 12px;
+// 正文标题大小
+$contentTitleFontSize: 22px;
+// 主导航字体大小
+$sideNavFontSize: 14px;
+// 首页 - header - 站长姓名字体大小
+$myNameFontSize: 18px;
+

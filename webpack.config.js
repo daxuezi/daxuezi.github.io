@@ -1,3 +1,6 @@
+const fs = require('fs');
+
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -5,24 +8,30 @@ const developmentConfig = require('./webpack.development.config');
 const productionConfig = require('./webpack.production.config');
 
 const env = process.env.NODE_ENV;
-
 const envConfig = env === "development" ? developmentConfig : productionConfig;
-
 const extractStyle = new ExtractTextPlugin({
     filename: "[name].[contenthash:8].css",
     disable: env === "development2"
 });
 
-const baseConfig = {
+
+// 文章数据
+const articles = {};
+fs.readdirSync('./db/articles').forEach(filepath => {
+  const article = require('./db/articles/' + filepath);
+  articles[article.id] = article;
+});
+
+module.exports = Object.assign(envConfig, {
   resolve: {
-    extensions: ['.jsx', '.js', '.json', '.css', '.scss']
+    extensions: ['.jsx', '.js', '.json', '.scss', '.css']
   },
 
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        use: ['babel-loader', ],
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
@@ -47,21 +56,29 @@ const baseConfig = {
               }
             ]
         })
+      },
+      {
+        test: /\.(jpe?g|png|git)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: 'img/[name].[hash:5].[ext]'
+          }
+        }]
       }
     ]
   },
 
-  plugins: [
+  plugins: envConfig.plugins.concat([
     extractStyle,
 
     new HtmlWebpackPlugin({
-      template: './src/index.tmpl.html'
+      template: './src/index.tmpl.html',
+      filename: '../index.html'
+    }),
+
+    new webpack.DefinePlugin({
+      __articles__: JSON.stringify(articles)
     })
-  ]
-};
-
-console.log();
-
-module.exports = Object.assign({}, baseConfig, envConfig, {
-  plugins: baseConfig.plugins.concat(envConfig.plugins)
+  ])
 });

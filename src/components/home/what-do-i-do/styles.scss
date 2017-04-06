@@ -1,0 +1,27 @@
+@import '../../base/base';
+
+.list {
+  margin: 50px 0 -50px;
+}
+
+.list-item {
+  margin-bottom: 50px;
+
+  @media screen and (max-width: $mobileSmMax) {
+    width:100%;
+  }
+
+  @media screen and (min-width: $mobileLgMin) {
+    width:50%;
+  }
+
+  @media screen and (min-width: $screenSmMin) {
+    width:25%;
+  }
+
+  .item-title {
+    margin-top: .7em;
+    font-size: $contentTitleFontSize;
+  }
+}
+

@@ -1,0 +1,37 @@
+@import '../base/base';
+
+.top-nav {
+  @include fixedFromOrigin;
+  z-index: index($layers, top-nav);
+  @include fullWidth(60px);
+  background: rgba(255, 255, 255, .9);
+}
+
+.top-nav-list {
+  position: absolute;
+  top: $topNavListTop;
+  right: $topNavListRight;
+}
+
+.top-nav-item {
+  float: left;
+  margin-left: 10px;
+  
+  &:nth-of-type(1) {
+    margin-left: 0;
+  }
+
+  a {
+    display: block;
+    padding: 0 8px;
+    color: $contentColorWhite;
+    font-size: $contentFontSize;
+    line-height: 2;
+    text-decoration: none;
+    background: $bgBlack;
+  }
+
+  a:hover {
+    opacity: .8;
+  }
+}

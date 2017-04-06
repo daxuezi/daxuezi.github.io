@@ -1,0 +1,30 @@
+@import '../base/base';
+
+.side-nav-list {
+  padding: 60px 0 0 60px;
+  font-size: $sideNavFontSize;
+}
+
+.side-nav-item {
+  list-style: none;
+  margin-bottom: $sideNavItemMarginBottom;
+
+  a {
+    display: block;
+    color: $contentColorGray;
+    text-decoration: none;
+  }
+
+  a span {
+    display: block;
+    margin-top: 5px;
+    font-size: 8px;
+    font-family: Arial;
+    text-transform: uppercase;
+  }
+  
+  &:global(.active) a,
+  a:hover {
+    color: $contentColorWhite;
+  }
+}

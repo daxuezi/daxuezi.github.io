@@ -1,34 +1,84 @@
-@import '../../../assets/base';
+@import '../../base/base';
 
 .home-header {
 	position: relative;
+  min-height: $headerMinHeight;
+  color: $contentColorWhite;
+  background: $headerBgBlack url(./bg.png) center bottom no-repeat;
+  background-size: auto 90%;
+  overflow: hidden;
+
+  &:global(.is-about-shown) {
+    .banner {
+      transform: translateY(-100%);
+    }
+
+    .about {
+      transform: translateY(0);
+    }
+  }
 }
 
 .banner, .about {
-	@include absoulteCover;
-	@include transitionEffect;
+  @include absoluteCover;
+  @include transitionEffect;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.btn {
-	display: inline-block;
+  &-content {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
+  
+  .btn {
+    display: inline-block;
     margin-top: 40px;
     width: 120px;
     line-height: 30px;
     font-size: 14px;
-    color: #fff;
-    border: 1px solid;
+    color: $contentColorWhite;
+    border: 1px solid $contentColorGray;
+    cursor: pointer;
+
+    &:hover {
+      color: $contentColorBlack;
+      background: $contentColorWhite;
+    }
+  }
 }
 
-.site-name {
-    height: 90px;
-    text-indent: -999999em;
-    background: pink;
-    // background: url(../img/daxuezi.png) center top no-repeat;
+.banner {
+  &-content {
+    top: $bannerTop;
+    margin-top: -$siteNameHeight * 0.5;
+  }
+
+  .site-name {
+    height: $siteNameHeight;
+    @include hideText;
+    background: url(./daxuezi.png) center top no-repeat;
+  }
 }
 
 
+.about {
+  transform: translateY(100%);
+  background: $bgBlack;
 
+  &-content {
+    top: $aboutTop;
+    margin-top: -$avatorHeight * 0.5;
+  }
+
+  .my-name {
+    margin: 8px 0;
+    font-size: $myNameFontSize;
+  }
+
+  .self-intro {
+    display: block;
+    width: $selfIntroWidth;           
+    margin-left: auto;
+    margin-right: auto
+  }
+}

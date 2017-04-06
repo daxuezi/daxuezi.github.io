@@ -1,0 +1,15 @@
+@import '../../base/base';
+
+.contact {
+	color: $contentColorWhite;
+  font-size: $contentTitleFontSize;
+  background: $bgBlack;
+	
+  .email {
+	  margin-top: 60px;
+	}
+
+  :global(.content-sub-title) {
+    color: inherit;
+  }
+}

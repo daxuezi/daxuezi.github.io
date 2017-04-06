@@ -1,112 +1,92 @@
-@import '../../assets/base';
+@import '../base/base';
 
-.container {
-	font: 14px/1.5 Arial, sans-serif;
-  color: #333;
-  word-break: break-word;
-  text-align: center;
-
-  &:global(.nav-opend){
-    .main-nav-trigger {
-      left: 300px;
-      cursor: w-resize;
-    }
-    .main-nav-mask {
-      width: 100%;
-    }
-    .main-nav {
-      width: 240px;
-    }
-    .main-content {
-      left: 240px;
-    }
+// nav打开的样式
+.container:global(.is-side-nav-shown) {
+  .side-nav-trigger {
+    left: $sideNavTriggerLeft + $sideNavWidth;
+    background-image: url(./icon_close.png);
+    cursor: w-resize;
+  }
+  .side-nav-mask {
+    width: 100%;
+  }
+  .side-nav {
+    width: $sideNavWidth;
+  }
+  .main {
+    left: $sideNavWidth;
   }
 }
 
-// 添加过渡动效
-.main-nav-trigger,
-.main-nav,
-.main-content {
+.side-nav-trigger,
+.side-nav,
+.main {
+  // 过渡动画
   @include transitionEffect;
 }
 
-// trigger不能放在main-content里，原因有2：
-//  1. main-content层级比main-nav-mask低，但trigger需要显示在mask之上；
-//  2. main-content是relative布局，向右移动时其原来占据的空间不变，trigger不会随之移动
+// trigger不能放在main里，原因有2：
+//  1. main层级比nav-mask低，但trigger需要显示在mask之上；
+//  2. main是relative布局，向右移动时其原来占据的空间不变，trigger不会随之移动
 // 因此，trigger需要fixed定位
-.main-nav-trigger,
-.main-nav-mask,
-.main-nav {
+.side-nav-trigger,
+.side-nav-mask,
+.side-nav {
   position: fixed;
 }
 
 // 初始时，主导航和mask均不显示，当点击trigger后才展现
-.main-nav-mask,
-.main-nav {
+.side-nav-mask,
+.side-nav {
   top: 0;
   left: 0;
   width: 0;
   height: 100%;
 }
 
-.main-nav-trigger {
-  z-index: index($layers, main-nav-trigger);
-  top: 60px;
-  left: 60px;
-  width: 20px;
-  height: 20px;
-  background: blue;
+.side-nav-trigger {
+  z-index: index($layers, side-nav-trigger);
+  top: $sideNavTriggerLeft;
+  left: $sideNavTriggerTop;
+  width: $sideNavTriggerWidth;
+  height: $sideNavTriggerHeight;
+  background: url(./icon_menu.png);
   cursor: e-resize;
 }
 
-.main-nav-mask {
-  z-index: index($layers, main-nav-mask);
+.side-nav-mask {
+  z-index: index($layers, side-nav-mask);
 }
 
-.main-nav {
-  z-index: index($layers, main-nav);
-  background: rgba(0, 0, 0, .2);
+.side-nav {
+  z-index: index($layers, side-nav);
+  background: $bgBlack;
   overflow: hidden;
-
-  ul {
-    list-style: none;
-    margin: 60px 0 0 60px
-  }
-
-  li {
-    margin-bottom: 50px
-  }
-
-  a {
-    display: block;
-    color: #777;
-    text-decoration: none;
-  }
-
-  a span {
-    display: block;
-    margin-top: 5px;
-    font-size: 8px;
-    font-family: Arial;
-    text-transform: uppercase;
-  }
-  
-  a.active,
-  a:hover {
-    color: #fff;
-  }
 }
 
-/*
-  main content area
- */
-.main-content {
+.main {
   position: relative;
-  z-index: index($layers, main-content);
+  z-index: index($layers, main);
   left: 0;
   top: 0;
+
+  ul:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  li {
+    float: left;
+  }
 }
 
-.main-content-footer {
-  text-align: center;
+.footer {
+  padding-top: $footerPaddintTop;
+  height: $footerHeight;
+  color: $footerColorGray;
 }

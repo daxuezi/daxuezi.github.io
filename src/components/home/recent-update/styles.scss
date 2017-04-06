@@ -1,0 +1,113 @@
+@import '../../base/base';
+
+$itemMarginMobileSm: -5%;
+$itemSizeMobileSm: 100%;
+
+$itemMarginMobileLg: -5%;
+$itemSizeMobileLg: 50%;
+
+$itemMarginScreenSm: 10px;
+$itemSizeScreenSm: 180px;
+
+$itemMarginScreenMid: 14px;
+$itemSizeScreenMid: 232px;
+
+$itemMarginScreenLg: 18px;
+$itemSizeScreenLg: 279px;
+
+.list {
+  margin-top: 90px;
+
+  &-item {
+    margin-bottom: 50px;
+    background: $bgGray;
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      
+      &:hover {
+        opacity: .8
+      }
+      
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  
+  /*
+    响应式
+   */
+  @media screen and (max-width: $mobileSmMax) {
+    & {
+      margin-right: 0;
+      margin-bottom: $itemMarginMobileSm;
+    }
+
+    &-item {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+      width: $itemSizeMobileSm;
+    }
+  }
+
+  @media screen and (min-width: $mobileLgMin) {
+    & {
+      margin-right: $itemMarginMobileLg;
+      margin-bottom: $itemMarginMobileLg;
+    }
+
+    &-item {
+      width: $itemSizeMobileLg;
+    }
+  
+  }
+
+  @media screen and (min-width: $screenSmMin) {
+    & {
+      margin-right: -$itemMarginScreenSm;
+      margin-bottom: -$itemMarginScreenSm;
+    }
+
+    &-item {
+      width: $itemSizeScreenSm;
+      height: $itemSizeScreenSm;
+      margin-right: $itemMarginScreenSm;
+      margin-bottom: $itemMarginScreenSm;
+    }
+  }
+
+  @media screen and (min-width: $screenMidMin) {
+    & {
+      margin-right: -$itemMarginScreenMid;
+      margin-bottom: -$itemMarginScreenMid;
+    }
+
+    &-item {
+      width: $itemSizeScreenMid;
+      height: $itemSizeScreenMid;
+      margin-right: $itemMarginScreenMid;
+      margin-bottom: $itemMarginScreenMid;
+    }
+  }
+
+  @media screen and (min-width: $screenLgMin) {
+    & {
+      margin-right: -$itemMarginScreenLg;
+      margin-bottom: -$itemMarginScreenLg;
+    }
+
+    &-item {
+      width: $itemSizeScreenLg;
+      height: $itemSizeScreenLg;
+      margin-right: $itemMarginScreenLg;
+      margin-bottom: $itemMarginScreenLg;
+    }
+  }
+}
