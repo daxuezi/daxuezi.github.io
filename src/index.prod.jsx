@@ -8,6 +8,7 @@ import Home from './components/home'; // 主页
 import Work from './components/work'; //悠闲小作
 import Experience from './components/experience'; // 经验分享
 import Photograph from './components/photograph'; // 摄影
+import Detail from './components/detail'; // 详情页
 
 
 ReactDOM.render(
