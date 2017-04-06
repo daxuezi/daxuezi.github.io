@@ -2,9 +2,6 @@ const { resolve } = require('path');
 
 const webpack = require('webpack');
 
-const outputPath = resolve(__dirname, 'dist');
-const publicPath = '/';
-
 
 module.exports = {
   entry: {
@@ -27,18 +24,18 @@ module.exports = {
 
   output: {
     filename: '[name].js',
-    path: outputPath,
-    publicPath: publicPath
+    path: resolve(__dirname, 'dist'),
+    publicPath: '/dist'
   },
 
   devServer: {
     hot: true,
     // enable HMR on the server
 
-    contentBase: [outputPath, resolve(__dirname, "assets")],
+    contentBase: [__dirname, resolve(__dirname, 'dist')],
     // match the output path
 
-    publicPath: publicPath
+    publicPath: '/dist'
     // match the output `publicPath`
   },
   

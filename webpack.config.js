@@ -4,15 +4,12 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const developmentConfig = require('./webpack.development.config');
-const productionConfig = require('./webpack.production.config');
-
 const env = process.env.NODE_ENV;
-const envConfig = env === "development" ? developmentConfig : productionConfig;
-const extractStyle = new ExtractTextPlugin({
-    filename: "[name].[contenthash:8].css",
-    disable: env === "development2"
-});
+const envConfig = env === "development" ? 
+                    require('./webpack.development.config') : 
+                    require('./webpack.production.config');
+
+const extractStyle = new ExtractTextPlugin('[name].[contenthash:8].css');
 
 
 // 文章数据

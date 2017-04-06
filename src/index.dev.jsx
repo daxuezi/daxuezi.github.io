@@ -15,7 +15,7 @@ const render = () => {
 	ReactDOM.render(
     <AppContainer>
       <Router history={browserHistory}>
-        <Route path="/" component={Layout}>
+        <Route path="/dist/" component={Layout}>
           <IndexRoute component={Home}/>
           <Route path="/work" component={Work}/>
           <Route path="/experience" component={Experience}/>

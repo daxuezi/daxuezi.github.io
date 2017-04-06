@@ -2,9 +2,6 @@ const { resolve } = require('path');
 
 const webpack = require('webpack');
 
-const outputPath = resolve(__dirname, 'dist');
-const publicPath = '/';
-
 
 module.exports = {
   entry: {
@@ -14,7 +11,7 @@ module.exports = {
   output: {
     filename: '[name].[chunkhash].js',
     path: resolve(__dirname, 'dist'),
-    publicPath: publicPath
+    publicPath: '/dist'
   },
 
   plugins: [
