@@ -1,6 +1,7 @@
 const { resolve } = require('path');
 
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
@@ -10,9 +11,11 @@ module.exports = {
 
   output: {
     filename: '[name].[chunkhash].js',
-    path: resolve(__dirname, 'dist'),
-    publicPath: '/'
+    path: resolve(__dirname, 'public'),
+    publicPath: '/public/'
   },
+
+  devtool: 'source-map',
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
@@ -28,7 +31,12 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({ 
       name: 'manifest' 
     }),
+    
+    new webpack.optimize.UglifyJsPlugin(),
 
-    new webpack.optimize.UglifyJsPlugin()
+    new HtmlWebpackPlugin({
+      template: './src/index.tmpl.html',
+      filename: '../index.html'
+    })
   ]
 };

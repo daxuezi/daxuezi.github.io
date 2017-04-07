@@ -1,11 +1,11 @@
 const { resolve } = require('path');
 
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-  entry: {
-    main: [
+  entry: [
     'react-hot-loader/patch',
     // activate HMR for React
 
@@ -19,27 +19,36 @@ module.exports = {
 
     './src/index.dev'
     // the entry point of our app
-    ]
-  },
+  ],
 
   output: {
-    filename: '[name].js',
-    path: resolve(__dirname, 'dist'),
-    publicPath: '/dist'
+    filename: 'bundle.js',
+    path: resolve(__dirname, 'public'),
+    publicPath: '/'
   },
 
+  devtool: 'eval',
+
   devServer: {
-    hot: true,
     // enable HMR on the server
+    hot: true,
+    
+    // serve index.html for 404
+    historyApiFallback: true,
 
-    contentBase: [__dirname, resolve(__dirname, 'dist')],
-    // match the output path
+    // Tell the server where to serve content from. 
+    contentBase: [resolve(__dirname, 'public'), resolve(__dirname, 'assets')],
 
-    publicPath: '/dist'
-    // match the output `publicPath`
+    // The bundled files will be available in the browser under this path.
+    publicPath: '/'
   },
   
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.tmpl.html',
+      filename: 'index.html'
+    }),
+
     new webpack.HotModuleReplacementPlugin(),
     // enable HMR globally
 

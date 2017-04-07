@@ -1,16 +1,13 @@
 const fs = require('fs');
+const { resolve } = require('path');
 
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const env = process.env.NODE_ENV;
-const envConfig = env === "development" ? 
-                    require('./webpack.development.config') : 
-                    require('./webpack.production.config');
+const envConfig = require('./webpack.'+ env +'.config');
 
 const extractStyle = new ExtractTextPlugin('[name].[contenthash:8].css');
-
 
 // 文章数据
 const articles = {};
@@ -18,6 +15,8 @@ fs.readdirSync('./db/articles').forEach(filepath => {
   const article = require('./db/articles/' + filepath);
   articles[article.id] = article;
 });
+
+const bundleFileName = env === 'production' ? '[name].[chunkhash].js' : '[name].js';
 
 module.exports = Object.assign(envConfig, {
   resolve: {
@@ -34,9 +33,8 @@ module.exports = Object.assign(envConfig, {
       {
         test: /\.s?css$/,
         use: extractStyle.extract({
-            // use style-loader in development
             fallback: "style-loader",
-            // allChunks: true,
+            allChunks: true,
             use: [
               {
                 loader: 'css-loader',
@@ -68,14 +66,13 @@ module.exports = Object.assign(envConfig, {
 
   plugins: envConfig.plugins.concat([
     extractStyle,
-
-    new HtmlWebpackPlugin({
-      template: './src/index.tmpl.html',
-      filename: '../index.html'
-    }),
-
+    
     new webpack.DefinePlugin({
-      __articles__: JSON.stringify(articles)
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      },
+      __articles__: JSON.stringify(articles),
+      __publicPath__: JSON.stringify(env === 'development' ? '/' : '/public/')
     })
   ])
 });

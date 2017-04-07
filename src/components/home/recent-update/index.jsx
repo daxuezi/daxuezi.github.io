@@ -24,7 +24,7 @@ class RecentUpdate extends React.Component {
                 <li key={i} className={styles.listItem}>
                   <Link to={"/detail/" + id}>
                     <img 
-                      src={'/dist/assets/img/article/'+ id +'/thumbnail.jpg'}
+                      src={__publicPath__ + 'img/article/'+ id +'/thumbnail.jpg'}
                       title={__articles__[id].title} 
                       alt={__articles__[id].title} />
                   </Link>
