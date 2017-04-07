@@ -72,11 +72,7 @@ module.exports = Object.assign(envConfig, {
         NODE_ENV: JSON.stringify('production')
       },
       __articles__: JSON.stringify(articles),
-<<<<<<< HEAD
       __publicPath__: JSON.stringify(env === 'development' ? '/' : '/public/')
-=======
-      __publicPath__: JSON.stringify('/')
->>>>>>> 91c2d05ad19dcfc4718781b1f3efaf8a2c5c32dc
     })
   ])
 });
