@@ -4,14 +4,14 @@
   "description": "daxuezi's personal website",
   "main": "index.html",
   "scripts": {
-    "clean": "rm -rf dist",
-    "copy": "cp -r assets dist",
-    "prestart": "npm run clean",
-    "poststart": "npm run copy",
+    "clean": "rm -rf public",
+    "copy": "cp -rf assets/ public",
+
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    
     "prebuild": "npm run clean",
     "postbuild": "npm run copy",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --color --progress",
-    "build": "cross-env NODE_ENV=production webpack --color --progress"
+    "build": "cross-env NODE_ENV=production webpack"    
   },
   "repository": {
     "type": "git",

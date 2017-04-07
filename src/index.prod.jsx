@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 
 import Layout from './components/layout';
@@ -12,14 +11,14 @@ import Detail from './components/detail'; // 详情页
 
 
 ReactDOM.render(
-	<Router history={browserHistory}>
+  <Router history={browserHistory}>
     <Route path="/" component={Layout}>
       <IndexRoute component={Home}/>
       <Route path="/work" component={Work}/>
       <Route path="/experience" component={Experience}/>
       <Route path="/photograph" component={Photograph}/>
-      <Route path="/detail/:filename" component={Detail}/>
+      <Route path="/detail/:id" component={Detail}/>
     </Route>
   </Router>,
-	document.getElementById('root')
+  document.getElementById('root')
 );
