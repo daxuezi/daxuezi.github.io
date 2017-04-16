@@ -15,7 +15,7 @@ class ResponsiveDesign extends React.Component {
           <div className="content-title">响应式布局网站</div>
           <div className="content-sub-title">支持更多设备浏览</div>
           <img 
-          	className={styles.responsiveDemo} 
+          	className={styles.responsiveImg} 
           	src={require('./responsive.png')}
           	alt="响应式布局示意图" />
         </div>

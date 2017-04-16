@@ -56,28 +56,35 @@ $topNavListRight: 93px;
 $footerHeight: 120px;
 $footerPaddintTop: 20px;
 
+// 首页各区块标题与内容的间距
+$titleContentGap: 50px;
+
 // 首页header
 $headerMinHeight: 500px;
-$bannerTop: 45%;
-$siteNameHeight: 90px;
-
 $aboutTop: 30%;
 $avatorWidth: 100px;
 $avatorHeight: 100px;
 $selfIntroWidth: 30em;
+$controlBarHeight: 80px;
+$controlBtnWidth: 124px;
+$controlBtnHeight: 34px;
+
+// 首页响应式示例图
+$responsiveImgWidth: 760px;
+$responsiveImgWidthMobile: 80%;
 
 // 详情页
 $detailContentTop: 120px;
 $detailContentBottom: 50px;
 
+
 /*
 	背景相关
  */
-
 $bgGray: #f5f6f7;
 $bgBlack: #272727;
 $headerBgBlack: #2e2e2e;
-
+$controlBtnBorderColor: #585858;
 
 /*
 	字体相关
@@ -106,4 +113,5 @@ $contentTitleFontSize: 22px;
 $sideNavFontSize: 14px;
 // 首页 - header - 站长姓名字体大小
 $myNameFontSize: 18px;
+$controlBtnFontSize: 14px;
 

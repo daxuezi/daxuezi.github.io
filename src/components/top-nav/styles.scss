@@ -1,6 +1,6 @@
 @import '../base/base';
 
-.top-nav {
+:global(.top-nav) {
   @include fixedFromOrigin;
   z-index: index($layers, top-nav);
   @include fullWidth(60px);

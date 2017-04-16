@@ -11,7 +11,7 @@ class TopNav extends React.Component {
 
 	render() {
 		return (
-      <nav className={styles.topNav}>
+      <nav className="top-nav">
         <ul className={styles.topNavList}>
           <li className={styles.topNavItem}>
             <Link to="/">首页</Link>

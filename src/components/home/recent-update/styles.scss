@@ -1,25 +1,29 @@
 @import '../../base/base';
 
-$itemMarginMobileSm: -5%;
+$itemMarginRightMobileSm: 0;
+$itemMarginBottomMobileSm: 5%;
 $itemSizeMobileSm: 100%;
 
-$itemMarginMobileLg: -5%;
-$itemSizeMobileLg: 50%;
+$itemMarginRightMobileLg: 5%;
+$itemMarginBottomMobileLg: 5%;
+$itemSizeMobileLg: 47.5%;
 
-$itemMarginScreenSm: 10px;
+$itemMarginRightScreenSm: 10px;
+$itemMarginBottomScreenSm: 0;
 $itemSizeScreenSm: 180px;
 
-$itemMarginScreenMid: 14px;
+$itemMarginRightScreenMid: 14px;
+$itemMarginBottomScreenMid: 0;
 $itemSizeScreenMid: 232px;
 
-$itemMarginScreenLg: 18px;
+$itemMarginRightScreenLg: 18px;
+$itemMarginBottomScreenLg: 0;
 $itemSizeScreenLg: 279px;
 
 .list {
-  margin-top: 90px;
+  margin-top: $titleContentGap;
 
   &-item {
-    margin-bottom: 50px;
     background: $bgGray;
 
     a {
@@ -38,76 +42,72 @@ $itemSizeScreenLg: 279px;
         height: 100%;
       }
     }
+
+    &:last-child {
+      margin-right: 0 !important;
+    }
   }
   
   /*
     响应式
    */
   @media screen and (max-width: $mobileSmMax) {
-    & {
-      margin-right: 0;
-      margin-bottom: $itemMarginMobileSm;
-    }
-
     &-item {
       float: none;
-      margin-left: auto;
-      margin-right: auto;
+      margin-right: $itemMarginRightMobileSm;
+      margin-bottom: $itemMarginBottomMobileSm;
       width: $itemSizeMobileSm;
     }
   }
 
   @media screen and (min-width: $mobileLgMin) {
-    & {
-      margin-right: $itemMarginMobileLg;
-      margin-bottom: $itemMarginMobileLg;
-    }
-
     &-item {
+      margin-right: $itemMarginRightMobileLg;
+      margin-bottom: $itemMarginBottomMobileLg;
       width: $itemSizeMobileLg;
+
+      &:nth-of-type(even) {
+        margin-right: 0;
+      }
     }
-  
   }
 
   @media screen and (min-width: $screenSmMin) {
-    & {
-      margin-right: -$itemMarginScreenSm;
-      margin-bottom: -$itemMarginScreenSm;
-    }
-
     &-item {
       width: $itemSizeScreenSm;
       height: $itemSizeScreenSm;
-      margin-right: $itemMarginScreenSm;
-      margin-bottom: $itemMarginScreenSm;
+      margin-right: $itemMarginRightScreenSm;
+      margin-bottom: $itemMarginBottomScreenSm;
+
+      &:nth-of-type(even) {
+        margin-right: $itemMarginRightScreenSm;
+      }
     }
   }
 
   @media screen and (min-width: $screenMidMin) {
-    & {
-      margin-right: -$itemMarginScreenMid;
-      margin-bottom: -$itemMarginScreenMid;
-    }
-
     &-item {
       width: $itemSizeScreenMid;
       height: $itemSizeScreenMid;
-      margin-right: $itemMarginScreenMid;
-      margin-bottom: $itemMarginScreenMid;
+      margin-right: $itemMarginRightScreenMid;
+      margin-bottom: $itemMarginBottomScreenMid;
+
+      &:nth-of-type(even) {
+        margin-right: $itemMarginRightScreenMid;
+      }
     }
   }
 
   @media screen and (min-width: $screenLgMin) {
-    & {
-      margin-right: -$itemMarginScreenLg;
-      margin-bottom: -$itemMarginScreenLg;
-    }
-
     &-item {
       width: $itemSizeScreenLg;
       height: $itemSizeScreenLg;
-      margin-right: $itemMarginScreenLg;
-      margin-bottom: $itemMarginScreenLg;
+      margin-right: $itemMarginRightScreenLg;
+      margin-bottom: $itemMarginBottomScreenLg;  
+
+      &:nth-of-type(even) {
+        margin-right: $itemMarginRightScreenLg;
+      }    
     }
   }
 }

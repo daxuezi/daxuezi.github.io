@@ -5,10 +5,19 @@
 }
 
 .list-item {
-  margin-bottom: 50px;
+  margin-bottom: $titleContentGap;
+
+  .item-title {
+    margin-top: .7em;
+    font-size: $contentTitleFontSize;
+  }
 
   @media screen and (max-width: $mobileSmMax) {
     width:100%;
+
+    .item-title {
+      margin-top: 0;
+    }
   }
 
   @media screen and (min-width: $mobileLgMin) {
@@ -19,9 +28,5 @@
     width:25%;
   }
 
-  .item-title {
-    margin-top: .7em;
-    font-size: $contentTitleFontSize;
-  }
 }
 

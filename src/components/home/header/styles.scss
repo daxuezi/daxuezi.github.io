@@ -4,12 +4,10 @@
 	position: relative;
   min-height: $headerMinHeight;
   color: $contentColorWhite;
-  background: $headerBgBlack url(./bg.png) center bottom no-repeat;
-  background-size: auto 90%;
   overflow: hidden;
 
   &:global(.is-about-shown) {
-    .banner {
+    .slogon {
       transform: translateY(-100%);
     }
 
@@ -19,53 +17,32 @@
   }
 }
 
-.banner, .about {
-  @include absoluteCover;
+.slogon, .about {
+  @include absoluteFromOrigin;
+  right: 0;
+  bottom: $controlBarHeight;
+
   @include transitionEffect;
+}
+
+.slogon {
+  background: $headerBgBlack url(./head.png) bottom center no-repeat;
+  background-size: auto 90%;
+
+  @media screen and (max-width: 640px) {
+    background-image: url(./head_mobile.png);
+    background-size: 100% auto;
+  }
+}
+
+.about {
+  background: $headerBgBlack;
+  transform: translateY(100%);
 
   &-content {
     position: absolute;
     left: 0;
-    width: 100%;
-    height: auto;
-  }
-  
-  .btn {
-    display: inline-block;
-    margin-top: 40px;
-    width: 120px;
-    line-height: 30px;
-    font-size: 14px;
-    color: $contentColorWhite;
-    border: 1px solid $contentColorGray;
-    cursor: pointer;
-
-    &:hover {
-      color: $contentColorBlack;
-      background: $contentColorWhite;
-    }
-  }
-}
-
-.banner {
-  &-content {
-    top: $bannerTop;
-    margin-top: -$siteNameHeight * 0.5;
-  }
-
-  .site-name {
-    height: $siteNameHeight;
-    @include hideText;
-    background: url(./daxuezi.png) center top no-repeat;
-  }
-}
-
-
-.about {
-  transform: translateY(100%);
-  background: $bgBlack;
-
-  &-content {
+    right: 0;
     top: $aboutTop;
     margin-top: -$avatorHeight * 0.5;
   }
@@ -76,9 +53,36 @@
   }
 
   .self-intro {
-    display: block;
-    width: $selfIntroWidth;           
-    margin-left: auto;
-    margin-right: auto
+    @include hc;
+    width: $selfIntroWidth;
+
+    @media screen and (max-width: 640px) {
+      width: 60%;
+    }
+  }
+}
+
+.control-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: $controlBarHeight;
+  background: $bgBlack;
+}
+
+.control-btn {
+  display: inline-block;
+  width: $controlBtnWidth;
+  margin-top: ($controlBarHeight - $controlBtnHeight) / 2;
+  line-height: $controlBtnHeight;
+  font-size: $controlBtnFontSize;
+  color: $contentColorWhite;
+  border: 1px solid $controlBtnBorderColor;
+  cursor: pointer;
+
+  &:hover {
+    color: $contentColorBlack;
+    background: $contentColorWhite;
   }
 }

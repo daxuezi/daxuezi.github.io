@@ -6,7 +6,7 @@
   background: $bgBlack;
 	
   .email {
-	  margin-top: 60px;
+	  margin-top: $titleContentGap;
 	}
 
   :global(.content-sub-title) {

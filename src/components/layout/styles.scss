@@ -1,7 +1,71 @@
+// 全局配置，只引入一次
+@import '../base/normalize';
 @import '../base/base';
+
+body {
+  font-size: $contentFontSize;
+  line-height: $contentLineHeight;
+  font-family: $contentFontFamily, sans-serif;
+  color: $contentColorBlack;
+  word-break: break-word;
+  text-align: center;
+}
+
+a[href] {
+  cursor: pointer;
+}
+
+// 主区域内容
+:global(.main-segment) {
+  padding: 100px 0;
+}
+
+// 主区域区块内容
+:global(.main-content) {
+  @include hc;
+
+  @media screen and (max-width: $mobileLgMax) {
+    & {
+      width: $mainContentMobileWidth;
+    }
+  }
+
+  @media screen and (min-width: $screenSmMin) {
+    & {
+      width: $mainContentSmWidth;
+    }
+  }
+
+  @media screen and (min-width: $screenMidMin) {
+    & {
+      width: $mainContentMidWidth;
+    }
+  }
+
+  @media screen and (min-width: $screenLgMin) {
+    & {
+      width: $mainContentLgWidth;
+    }
+  }
+
+  :global(.content-title) {
+    font-size: $contentTitleFontSize;
+  }
+
+  :global(.content-sub-title) {
+    font-size: $contentFontSize;
+    font-weight: normal;
+    color: $contentColorGray;
+  }
+}
 
 // nav打开的样式
 .container:global(.is-side-nav-shown) {
+  // 侧导航打开时，隐藏顶部导航
+  :global(.top-nav) {
+    display: none;
+  }
+
   .side-nav-trigger {
     left: $sideNavTriggerLeft + $sideNavWidth;
     background-image: url(./icon_close.png);
