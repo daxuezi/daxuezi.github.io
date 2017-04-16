@@ -3,7 +3,6 @@ const { resolve } = require('path');
 
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const importOnce = require('node-sass-import-once');
 
 const env = process.env.NODE_ENV;
 const envConfig = require('./webpack.'+ env +'.config');
@@ -48,15 +47,7 @@ module.exports = Object.assign(envConfig, {
                 }
               }, 
               {
-                loader: 'sass-loader',
-                options: {
-                  importer: importOnce,
-                  importOnce: {
-                    index: false,
-                    css: false,
-                    bower: false
-                  }
-                }
+                loader: 'sass-loader'
               }
             ]
         })
